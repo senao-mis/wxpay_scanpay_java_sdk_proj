@@ -183,7 +183,6 @@ public class ScanPayBusiness {
 
                 log.i("【一次性支付成功】");
 
-                String transID = scanPayResData.getTransaction_id();
                 if(!"".equals(scanPayResData.getTransaction_id())){
                     transactionID = scanPayResData.getTransaction_id();
                 }
@@ -294,8 +293,7 @@ public class ScanPayBusiness {
             }
 
             if (scanPayQueryResData.getResult_code().equals("SUCCESS")) {//业务层成功
-                String transID = scanPayQueryResData.getTransaction_id();
-                if(!scanPayQueryResDatals(scanPayQueryResData.getTransaction_id())){
+                if(!"".equals(scanPayQueryResData.getTransaction_id())){
                     transactionID = scanPayQueryResData.getTransaction_id();
                 }
                 if (scanPayQueryResData.getTrade_state().equals("SUCCESS")) {
