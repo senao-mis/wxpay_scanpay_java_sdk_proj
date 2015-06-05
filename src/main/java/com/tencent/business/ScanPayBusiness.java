@@ -184,8 +184,8 @@ public class ScanPayBusiness {
                 log.i("【一次性支付成功】");
 
                 String transID = scanPayResData.getTransaction_id();
-                if(transID != null){
-                    transactionID = transID;
+                if(!"".equals(scanPayResData.getTransaction_id())){
+                    transactionID = scanPayResData.getTransaction_id();
                 }
 
                 resultListener.onSuccess(scanPayResData,transactionID);
@@ -295,8 +295,8 @@ public class ScanPayBusiness {
 
             if (scanPayQueryResData.getResult_code().equals("SUCCESS")) {//业务层成功
                 String transID = scanPayQueryResData.getTransaction_id();
-                if(transID != null){
-                    transactionID = transID;
+                if(!scanPayQueryResDatals(scanPayQueryResData.getTransaction_id())){
+                    transactionID = scanPayQueryResData.getTransaction_id();
                 }
                 if (scanPayQueryResData.getTrade_state().equals("SUCCESS")) {
                     //表示查单结果为“支付成功”
